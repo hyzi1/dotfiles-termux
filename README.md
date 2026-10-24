@@ -10,7 +10,7 @@ I am very much a beginner in **programming** and in using **Git**. I will be upl
 ## Update 💐
 
 ```git
-git clone https://github.com/hyzi1/dotfiles-termux.git && cd hyzi
+git clone https://github.com/hyzi1/dotfiles-termux.git && cd dotfiles-termux
 ```
 
 ```chmod
