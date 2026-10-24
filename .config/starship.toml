@@ -1,0 +1,44 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+\
+[](0)\
+[hyzi](bg:0)\
+[  ](bg:0 fg:4)\
+[](bg:8 fg:0)\
+$directory\
+$git_branch\
+
+
+[](bg:2 fg:8)\
+
+[](bg:4 fg:2)\
+
+[](bg:0 fg:4)\
+[](fg:0)\
+$character"""
+
+
+[directory]
+style = "fg:7 bg:8"
+format = "[ $path ]($style)"
+truncation_length = 2
+truncation_symbol = ""
+
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"~" = " "
+"shared" = "󰋊 "
+"Download" = " "
+"Music" = " "
+"Pictures" = " "
+
+
+[git_branch]
+symbol = ""
+format = '[[ $symbol $branch ](fg:2 bg:8)]($style)'
+
+[character]
+success_symbol = ""
+error_symbol = ""

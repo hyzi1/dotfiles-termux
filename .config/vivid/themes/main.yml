@@ -1,0 +1,124 @@
+# Adaptive theme built using the structure of: https://github.com/sharkdp/vivid/blob/master/themes/catppuccin-frappe.yml 
+
+colors:
+  black: "ansi:black"
+  red: "ansi:red"
+  green: "ansi:green"
+  yellow: "ansi:yellow"
+  blue: "ansi:blue"
+  magenta: "ansi:magenta"
+  cyan: "ansi:cyan"
+  white: "ansi:white"
+
+  bright_black: "ansi:bright_black"
+  bright_red: "ansi:bright_red"
+  bright_green: "ansi:bright_green"
+  bright_yellow: "ansi:bright_yellow"
+  bright_blue: "ansi:bright_blue"
+  bright_magenta: "ansi:bright_magenta"
+  bright_cyan: "ansi:bright_cyan"
+  bright_white: "ansi:bright_white"
+
+core:
+  normal_text: {}
+  regular_file: {}
+  reset_to_normal: {}
+
+  directory:
+    foreground: green
+
+  symlink:
+    foreground: bright_magenta
+
+  multi_hard_link: {}
+
+  fifo:
+    foreground: black
+    background: blue
+
+  socket:
+    foreground: black
+    background: bright_magenta
+
+  door:
+    foreground: black
+    background: bright_magenta
+
+  block_device:
+    foreground: bright_blue
+    background: bright_black
+
+  character_device:
+    foreground: bright_magenta
+    background: bright_black
+
+  broken_symlink:
+    foreground: black
+    background: red
+
+  missing_symlink_target:
+    foreground: black
+    background: red
+
+  setuid: {}
+
+  setgid: {}
+
+  file_with_capability: {}
+
+  sticky_other_writable: {}
+
+  other_writable: {}
+
+  sticky: {}
+
+  executable_file:
+    foreground: red
+    font-style: bold
+
+text:
+  special:
+    foreground: black
+    background: yellow
+
+  todo:
+    font-style: bold
+
+  licenses:
+    foreground: bright_black
+
+  configuration:
+    foreground: yellow
+
+  other:
+    foreground: magenta
+
+markup:
+  foreground: yellow
+
+programming:
+  source:
+    foreground: green
+
+  tooling:
+    foreground: cyan
+
+    continuous-integration:
+      foreground: green
+
+media:
+  foreground: bright_magenta
+
+office:
+  foreground: red
+
+archives:
+  foreground: bright_blue
+  font-style: underline
+
+executable:
+  foreground: red
+  font-style: bold
+
+unimportant:
+  foreground: bright_black

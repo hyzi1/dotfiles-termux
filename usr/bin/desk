@@ -1,0 +1,5 @@
+# pkg i x11-repo termux-x11-nightly xfce4 xfce4-terminal dbus pulseaudio feh mpv-x cmus
+
+am start \
+-n com.termux.x11/com.termux.x11.MainActivity >/dev/null
+termux-x11 :1 -xstartup "xfce4-session" -dpi 120 &

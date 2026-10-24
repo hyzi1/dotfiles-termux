@@ -1,0 +1,5 @@
+1> Launch Shizuku.
+
+2> Go to the "Use Shizuku in terminal apps" section.
+
+3> Grant permissions using "chmod +x rish_shizuku.dex".

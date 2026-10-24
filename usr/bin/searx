@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# pkg i redis
+
+source "$HOME/searxng/searx1/bin/activate"
+redis-server --daemonize yes
+export PYTHONPATH="$HOME/searxng:$PYTHONPATH"
+trap "redis-cli shutdown" EXIT
+python -m searx.webapp "$@"

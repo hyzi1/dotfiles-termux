@@ -1,0 +1,23 @@
+#===
+# AnnotationMono
+
+https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/AnnotationMono.zip
+#===
+
+#===
+# Agave
+
+https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/Agave.zip
+#===
+
+#===
+# 0xProton
+
+https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/0xProto.zip
+#===
+
+#===
+# Recursive
+
+https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/Recursive.zip
+#===
