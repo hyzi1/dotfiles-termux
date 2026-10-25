@@ -6,6 +6,9 @@ return {
     lazy = false,
     opts = {
       flavour = "frappe",
+      styles = {
+        comments = {},
+      },
     },
   },
   {

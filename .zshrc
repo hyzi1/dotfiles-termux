@@ -128,8 +128,10 @@ setopt hist_verify
 
 # >> I use ColemakDH, the H is more comfortable.
 alias h='lsd -X'
-alias h2='lsd -a'
-alias h3='lsd --tree'
+alias hq='lsd -a'
+alias h1='lsd -1 *(.)'
+alias h2='lsd -X -d .*'
+alias h-='lsd --tree -a'
 #<<
 
 # >> I like to have my suggestions set, so I did something simple.
