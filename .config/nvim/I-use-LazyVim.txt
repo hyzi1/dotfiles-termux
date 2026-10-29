@@ -3,3 +3,5 @@ Yes. There is nothing here.
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 
 rm -rf ~/.config/nvim/.git
+
+Update: I’ve started adding some things of my own, but nvim is still very complicated for me.
