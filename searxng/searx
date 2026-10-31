@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+source "$HOME/searxng/searx1/bin/activate"
+export PYTHONPATH="$HOME/searxng${PYTHONPATH:+:$PYTHONPATH}"
+export SEARXNG_SETTINGS_PATH="$HOME/searxng/searx/settings.yml"
+
+python -m searx.webapp "$@" &
+PID=$!
+
+trap "kill $PID 2>/dev/null" EXIT
+
+while kill -0 $PID 2>/dev/null; do
+    read -r || break
+    kill $PID 2>/dev/null
+    break
+done
