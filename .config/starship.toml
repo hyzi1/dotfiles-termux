@@ -2,25 +2,24 @@
 
 format = """
 \
-[](0)\
-[hyzi](bg:0)\
-[  ](bg:0 fg:4)\
-[](bg:8 fg:0)\
+[╭─](5)\
+[󰣨 ](bg:5 fg:0)\
+[](bg:0 fg:5)\
 $directory\
 $git_branch\
 
 
-[](bg:2 fg:8)\
+[](bg:4 fg:0)\
 
-[](bg:4 fg:2)\
+[](bg:2 fg:4)\
 
-[](bg:0 fg:4)\
-[](fg:0)\
-$character"""
+[](bg:5 fg:2)\
+[](fg:5)\
+\n$character"""
 
 
 [directory]
-style = "fg:7 bg:8"
+style = "fg:7 bg:0"
 format = "[ $path ]($style)"
 truncation_length = 2
 truncation_symbol = ""
@@ -28,7 +27,7 @@ truncation_symbol = ""
 
 [directory.substitutions]
 "Documents" = "󰈙 "
-"~" = " "
+"~" = "󰥹 "
 "shared" = "󰋊 "
 "Download" = " "
 "Music" = " "
@@ -36,9 +35,9 @@ truncation_symbol = ""
 
 
 [git_branch]
-symbol = ""
-format = '[[ $symbol $branch ](fg:2 bg:8)]($style)'
+symbol = ""
+format = '[[ $symbol$branch ](fg:5 bg:0)]($style)'
 
 [character]
-success_symbol = ""
-error_symbol = ""
+success_symbol = "[│\n╰─➤](purple)"
+error_symbol = "[│\n╰─➤](purple)"

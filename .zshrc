@@ -137,6 +137,85 @@ alias h-='lsd --tree -a'
 # >> I like to have my suggestions set, so I did something simple.
 alias zhi='cp $HOME/.config/.zsh_history ~/.zsh_history && exit'
 #<<
+
+alias gpg-sk='gpg --list-secret-keys --keyid-format=long'
+alias gpg-pk='gpg --list-keys --keyid-format=long'
+alias gpg-v='gpg --verify'
+alias gpg-m='gpg --encrypt --armor --recipient'
+alias gpg-i='gpg --import'
+#===
+
+#===
+# ZSTD
+
+# This is for quickly creating a compressed tar archive.
+
+# Use: zs22 images
+
+zs22() {
+  local target="${1%/}"
+  tar -I 'zstd --ultra -22 -T0' -cf "${target}.tar.zst" "$1"
+}
+#===
+
+#===
+# Hashes
+
+# Quickly create and compare hashes
+
+# Use: sh2 backup.tar
+
+sh2() {
+  sha256sum "$1" > "${1}.sha256"
+  sha512sum "$1" > "${1}.sha512"
+}
+
+sum-a() {
+    setopt local_options null_glob
+
+    for f in *.md5; do
+        [[ -f "$f" ]] && md5sum -c "$f"
+    done
+
+    for f in *.sha1; do
+        [[ -f "$f" ]] && sha1sum -c "$f"
+    done
+
+    for f in *.sha256; do
+        [[ -f "$f" ]] && sha256sum -c "$f"
+    done
+
+    for f in *.sha512; do
+        [[ -f "$f" ]] && sha512sum -c "$f"
+    done
+
+    for f in *.b3; do
+        [[ -f "$f" ]] && b3sum -c "$f"
+    done
+}
+#===
+
+#===
+# GPG
+
+# Use: gpg-s hi.txt
+
+gpg-s() {
+    read "user_id?ID-Email: "
+    gpg --local-user "$user_id" --clearsign "$1"
+}
+
+# These aren't used much. They are for exporting keys.
+
+gpg-e() {
+    read "user_id?ID-Email: "
+    gpg --armor --export "$user_id" > key.asc
+}
+
+gpg-exs() {
+    read "user_id?ID-Email: "
+    gpg --export-secret-keys --armor "$user_id" > private-key.asc
+}
 #===
 
 #===
