@@ -103,10 +103,8 @@ alias addl="aria2c --conf-path=$HOME/.aria2/d.conf -i"
 
 # I use the thin cursor. Some tools reset it on exit, so this fixes it.
 
-CMD_WRAP+=(vi fzf)
-for cmd in "${CMD_WRAP[@]}"; do
-  eval "$cmd() { command $cmd \"\$@\"; printf '\e[6 q'; }"
-done
+_fix_cursor() { print -n '\e[6 q' }
+precmd_functions+=(_fix_cursor)
 #===
 
 #===
@@ -133,6 +131,15 @@ alias h1='lsd -1 *(.)'
 alias h2='lsd -X -d .*'
 alias h-='lsd --tree -a'
 #<<
+alias l='lsd -X -d *(/)'
+alias ll='lsd -X -d *(D/)'
+alias b='bat -p'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias c='clear'
 
 # >> I like to have my suggestions set, so I did something simple.
 alias zhi='cp $HOME/.config/.zsh_history ~/.zsh_history && exit'
@@ -156,6 +163,16 @@ zs22() {
   local target="${1%/}"
   tar -I 'zstd --ultra -22 -T0' -cf "${target}.tar.zst" "$1"
 }
+
+zs9() {
+  local target="${1%/}"
+  tar -I 'zstd -9 -T0' -cf "${target}.tar.zst" "$1"
+}
+
+zs6() {
+  local target="${1%/}"
+  tar -I 'zstd -6 -T0' -cf "${target}.tar.zst" "$1"
+}
 #===
 
 #===
@@ -168,6 +185,11 @@ zs22() {
 sh2() {
   sha256sum "$1" > "${1}.sha256"
   sha512sum "$1" > "${1}.sha512"
+}
+
+sh1() {
+  sha1sum "$1" > "${1}.sha1"
+  md5sum "$1" > "${1}.md5"
 }
 
 sum-a() {
@@ -222,17 +244,11 @@ gpg-exs() {
 # Yazi
 
 function y() {
-  local tmp cwd
-  tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-  
-  command yazi "$@" --cwd-file="$tmp"
-  
-  # Fix cursor
-  printf '\e[6 q'
-  
-  IFS= read -r -d '' cwd < "$tmp"
-  [ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd" || builtin true
-  command rm -f -- "$tmp"
+	local tmp cwd; tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd" || builtin true
+	command rm -f -- "$tmp"
 }
 #===
 

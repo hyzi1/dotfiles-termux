@@ -1,0 +1,32 @@
+[alias]
+    m = git remote set-url origin
+    rv = git remote -v
+    s = status
+    ch = checkout
+    b = branch
+    mi = commit
+    unstage = reset HEAD --
+    last = log -1 HEAD --stat
+    undo = reset --soft HEAD^
+    lg = log --graph --pretty=format:'%C(auto)%h%d - %s %C(dim white)(%ar)%C(reset)' --abbrev-commit
+    amend = commit --amend --no-edit
+    root = rev-parse --show-toplevel
+    cp = cherry-pick
+
+[include]
+    path = ~/.gitconfig.local
+
+[init]
+    defaultBranch = main
+
+[push]
+    autoSetupRemote = true
+
+[pull]
+    rebase = true
+
+[rerere]
+    enabled = true
+
+[help]
+    autocorrect = 1
