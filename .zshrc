@@ -22,8 +22,6 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 # Dependencies
 
 # pkg i zsh starship vivid file python git nodejs aria2 yt-dlp fzf zoxide lsd gum yazi ffmpeg neovim termux-api pinentry gnupg bat
-
-# python3 -m pip install mutagen
 #===
 
 #===
@@ -51,51 +49,76 @@ alias shi="$HOME/.config/shizuku/rish"
 #===
 # YT DLP
 
-# yt-dlp/videos
+# pkg i nodejs aria2 ffmpeg python
+
+# python3 -m pip install --upgrade "yt-dlp[default,curl-cffi]" && python3 -m pip install mutagen
+
+# yt-dlp/video
+
+# I have 1TB, which is why I want to download everything in high quality.
 ytv() {
+    if [ $# -eq 0 ]; then
+        echo "Use: ytv URL / ytv -a list.txt"
+        return 1
+    fi
+
     yt-dlp \
-    --js-runtimes node \
-    -P "$HOME/storage/downloads/.vi/" \
-    --downloader aria2c \
-    --downloader-args aria2c:"--conf-path=$HOME/.aria2//i.conf" \
-    --write-thumbnail \
-    -f "bestvideo[height<=1080][vcodec^=avc]+bestaudio[ext=opus]/bestvideo[height<=1080]+bestaudio/best" \
-    --merge-output-format mkv \
-    --write-subs \
-    --sub-langs "es.*,en.*" \
-    --embed-subs \
-    --embed-thumbnail \
-    "$1"
+        --js-runtimes node \
+        -P "$HOME/storage/downloads/add/vi/" \
+        --downloader aria2c \
+        --downloader-args "aria2c:-x 16 -s 16 -k 1M" \
+        --write-thumbnail \
+        -f "bv*[height<=1080][fps=60][vcodec^=avc]+ba[acodec=opus]/bv*[height<=1080][fps=60]+ba/bv*[height<=1080]+ba/b" \
+        --merge-output-format mkv \
+        --write-auto-subs \
+        --sub-langs "es,en" \
+        --convert-subs srt \
+        --sleep-subtitles 55 \
+        --sleep-requests 2 \
+        --impersonate chrome \
+        -P "subtitle:$HOME/storage/downloads/add/vi/subs/" \
+        --embed-thumbnail \
+        "$@"
+# My configuration is very aggressive, which causes YouTube to block me; that’s why I use: --sleep-subtitles 55
 }
+
 # yt-dlp/audio
-# python3 -m pip install mutagen
 
 yta() {
+    if [ -z "$1" ]; then
+        echo "Use: ytv URL / ytv -a list.txt"
+        return 1
+    fi
+
     yt-dlp \
-    --js-runtimes node \
-    -P "$HOME/storage/downloads/.au/" \
-    --downloader aria2c \
-    --downloader-args aria2c:"--conf-path=$HOME/.aria2/i.conf" \
-    -f "bestaudio[ext=opus]/bestaudio/best" \
-    -x \
-    --audio-format opus \
-    --write-thumbnail \
-    --embed-thumbnail \
-    --embed-metadata \
-    "$1"
+        --js-runtimes node \
+        -P "$HOME/storage/downloads/add/au/" \
+        --downloader aria2c \
+        --downloader-args "aria2c:-x 16 -s 16 -k 1M" \
+        -f "ba[acodec^=opus]/ba" \
+        -x \
+        --audio-format opus \
+        --embed-thumbnail \
+        --embed-metadata \
+        "$@"
 }
-# If you want to install from a '.txt' list, just change it to: -a "$1"
+# You can use a list.txt file to include your links: yta -a list.txt
 #===
 
 #===
 # Aria2
 
 # Using Aria2 is super convenient; it optimizes my mobile data usage. And if I want to use a public network to download things, I just prepare a .txt list of what I want to download before heading out, and that's it.
-alias adw="aria2c --conf-path=$HOME/.aria2/i.conf"
-alias adwl="aria2c --conf-path=$HOME/.aria2/i.conf -i"
 
-alias add="aria2c --conf-path=$HOME/.aria2/d.conf"
-alias addl="aria2c --conf-path=$HOME/.aria2/d.conf -i"
+# WIFI
+adw()  { aria2c --conf-path="$HOME/.aria2/i.conf" "$@"; }
+adwl() { adw -i "$@"; }
+# List mode: adwl list.txt
+
+# Data
+add()  { aria2c --conf-path="$HOME/.aria2/d.conf" "$@"; }
+addl() { add -i "$@"; }
+# List mode: addl list.txt
 #===
 
 #===
@@ -192,6 +215,7 @@ sh1() {
   md5sum "$1" > "${1}.md5"
 }
 
+# This is for comparing hashes quickly, without the need for specifying anything.
 sum-a() {
     setopt local_options null_glob
 

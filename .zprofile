@@ -1,3 +1,5 @@
+# I set this up for experimentation or for use in demos; it might be annoying for day-to-day use. Just delete .zprofile, as it’s purely cosmetic.
+
 # pkg i zsh chafa fastfetch
 
 # Look, it really depends on how you have your phone's resources configured. The animation might take longer to start, or it might not.
@@ -22,7 +24,9 @@ unsetopt monitor
 echo -e "\033[35m[+] You're back! press \033[31m[ENTER] \033[32mto start\033[0m"
 
 #The larger the number, the further away you need to move the screen.
-chafa -c full --dither none -s 60 --symbols block+quad+vhalf+hhalf --probe off --duration inf "$gif" &
+
+# Change the number 40 to 60, or whatever you like.
+chafa -c full --dither none -s 40 --symbols block+quad+vhalf+hhalf --probe off --duration inf "$gif" &
 pid=$!
 #===
 

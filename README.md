@@ -46,7 +46,7 @@ pkg i zsh starship vivid file python git nodejs aria2 yt-dlp fzf zoxide lsd gum 
 ```
 
 ```python
-python3 -m pip install mutagen
+python3 -m pip install --upgrade "yt-dlp[default,curl-cffi]" && python3 -m pip install mutagen
 ```
 
 ## Demo 🌺
