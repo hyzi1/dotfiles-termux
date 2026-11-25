@@ -1,0 +1,106 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "logo": null,
+  "display": {
+    "disableLinewrap": true,
+    "separator": " ➤ ",
+    "color": {
+      "separator": "light_magenta"
+    }
+  },
+  "modules": [
+    {
+      "type": "command",
+      "shell": "sh",
+      "param": "-c",
+      "text": "cat ~/.config/fastfetch/main.txt",
+      "outputColor": "light_magenta",
+      "splitLines": true,
+      "key": " "
+    },
+    {
+      "type": "custom",
+      "format": "╭─── 󰋜 System ──────────────────────╮",
+      "outputColor": "light_magenta"
+    },
+    {
+      "type": "custom",
+      "format": "│  󰔎 User │ @hyzi",
+      "outputColor": "magenta"
+    },
+    {
+      "type": "os",
+      "key": "│  󰀲 OS",
+      "keyColor": "light_cyan",
+      "outputColor": "white"
+    },
+    {
+      "type": "kernel",
+      "key": "│  󰌽 Kernel",
+      "keyColor": "light_cyan",
+      "outputColor": "white"
+    },
+    {
+      "type": "terminal",
+      "key": "│  󰞷 Term",
+      "keyColor": "light_cyan",
+      "outputColor": "white"
+    },
+    {
+      "type": "custom",
+      "format": "├─── 󰏏 Hardware ────────────────────┤",
+      "outputColor": "light_magenta"
+    },
+    {
+      "type": "cpu",
+      "key": "│  󰻠 CPU",
+      "keyColor": "light_blue",
+      "outputColor": "white"
+    },
+    {
+      "type": "gpu",
+      "key": "│  󰢮 GPU",
+      "keyColor": "light_blue",
+      "outputColor": "white"
+    },
+    {
+      "type": "memory",
+      "key": "│  󰍛 RAM",
+      "keyColor": "light_blue",
+      "outputColor": "white"
+    },
+    {
+      "type": "disk",
+      "key": "│  󰋊 Int",
+      "folders": "/storage/emulated",
+      "format": "{size-used} / {size-total} ({size-percentage}%)",
+      "keyColor": "light_magenta",
+      "outputColor": "white"
+    },
+    {
+      "type": "disk",
+      "key": "│  󰉉 SD",
+      "folders": "/mnt/media_rw/6AFF-FFF1",
+      "format": "{size-used} / {size-total} ({size-percentage}%)",
+      "keyColor": "light_magenta",
+      "outputColor": "white"
+    },
+    {
+      "type": "battery",
+      "key": "│  󰁹 Battery",
+      "keyColor": "light_green",
+      "outputColor": "white"
+    },
+    {
+      "type": "custom",
+      "format": "╰───────────────────────────────────╯",
+      "outputColor": "light_magenta"
+    },
+    {
+      "type": "custom",
+            "format": "\u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m"
+        },
+        "break",
+        "break",
+            ]
+}

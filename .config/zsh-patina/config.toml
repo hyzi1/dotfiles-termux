@@ -1,0 +1,12 @@
+[highlighting]
+theme = "file:~/.config/zsh-patina/themes/violet.toml"
+
+# dynamic highlighting stays on: valid commands, existing files...
+dynamic = { callables = true, paths = "partial" }
+
+# show autocd targets as directories, not commands
+autocd_style = "directory"
+
+# highlight even on long lines, termux can handle it
+max_line_length = 20000
+timeout_ms = 500

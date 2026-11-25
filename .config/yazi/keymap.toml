@@ -1,0 +1,7 @@
+[mgr]
+prepend_keymap = [
+	{ on = [ "g", "d" ], run = "cd ~/storage/shared/Download",  desc = "Download",    for = "unix" },
+	{ on = [ "g", "i" ], run = "cd ~/storage/shared/hyzib", desc = "hyzib", for = "unix" },
+  { on = [ "g", "h" ], run = "cd ~/", desc = "$HOME", for = "unix" },
+  { on = [ "g", "s" ], run = "cd ~/storage/shared", desc = "storage", for = "unix" },
+]

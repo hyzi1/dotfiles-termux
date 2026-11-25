@@ -1,0 +1,38 @@
+"string" = "magenta"
+"string.regexp" = "green"
+"punctuation.definition.string" = "magenta"
+
+# dynamic: real files/dirs confirm with purple + underline
+# partial scopes stay explicit on purpose, they only fire when
+# paths = "partial" is set in the config
+"dynamic.path" = { foreground = "magenta", underline = true }
+"dynamic.path.file.partial" = { foreground = "magenta", underline = true }
+"dynamic.path.directory.partial" = { foreground = "magenta", underline = true }
+
+# commands live in blue territory
+# alias and function inherit the generic dynamic.callable style,
+# which already covers them in blue. builtin remains explicit
+# because it stands out in cyan, and missing provides immediate
+# visual feedback for commands that do not exist
+"variable.function" = "blue"
+"dynamic.callable" = "blue"
+"dynamic.callable.builtin" = "cyan"
+"dynamic.callable.missing" = { foreground = "red", bold = true }
+
+# green for the successful things
+"constant.character.escape" = "green"
+"constant.numeric" = "cyan"
+"variable.other" = "green"
+"punctuation.definition.variable" = "green"
+"support.function" = "green"
+
+"keyword" = "blue"
+"entity.name.function" = "blue"
+"comment" = "white"
+
+# errors
+"invalid" = { foreground = "red", bold = true }
+"invalid.deprecated.foreign" = "red"
+
+[metadata]
+extends = "patina"
